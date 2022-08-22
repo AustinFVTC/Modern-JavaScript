@@ -10,9 +10,9 @@
 */
 
 //define variables containing plant filenames
-let blanket = "blanket.jpg";
-let rugosa = "rugosa.jpg";
-let bluestem = "bluestem.jpg";
+let blanket = "images/blanket.jpg";
+let rugosa = "images/rugosa.jpg";
+let bluestem = "images/bluestem.jpg";
 
 //add event handlers to the list items
 document.getElementById("blanket").onclick = function() {
