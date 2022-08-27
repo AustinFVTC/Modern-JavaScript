@@ -67,8 +67,10 @@ for (let i = 1; i <= numOfLessons; i++) {
 
 // Automatically expand Lesson if coming from assignment inside lesson
 let url = window.location.href;
+let baseURL = url;
 if (url.indexOf("?") !== -1) {  // Paramater has been passed
-    id = doubleDigit(url.split("?")[1].split("=")[1])  // Not ideal, incase a bad value is passed or a different paramater.
+    baseURL = url.split("?")[0];
+    id = doubleDigit(url.split("?")[1].split("=")[1]);  // Not ideal, incase a bad value is passed or a different paramater.
     toggleLessonContent(id);
 }
 
@@ -79,7 +81,7 @@ if (url.indexOf("?") !== -1) {  // Paramater has been passed
 function toggleLessonContent(lessonID) {
     let lessonContainer = document.getElementById("lesson"+lessonID+"content")
     lessonContainer.hidden = !lessonContainer.hidden;
-    let newURL = "http://127.0.0.1:5500/Home%20Page/AustinLennert.html";
+    let newURL = baseURL;
     if (!lessonContainer.hidden) {
         newURL += "?lesson=" + lessonID;
     }
