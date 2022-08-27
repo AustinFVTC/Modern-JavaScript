@@ -34,26 +34,44 @@ function htmlToElement(html) {
     return template.content.firstChild;
 }
 
+/**
+ * Ensures an ID is represented as a 2-digit string
+ * @param num - Number to represent as 2 digits
+ * @returns num as a 2-digit string
+ */
+function doubleDigit(num) {
+    if (("" + num).length === 1) {  // Make the lesson-number 2 digits
+        num = "0" + ("" + num);
+    }
+    return num;
+}
+
 // Duplicates and adds 12 lessons leading to their proper files
 for (let i = 1; i <= numOfLessons; i++) {
-    let lessonID = i;
-    if (("" + i).length === 1) {  // Make the lesson-number 2 digits
-        lessonID = "0" + ("" + i);
-    }
-    console.log(lessons)
+    let lessonID = doubleDigit(i)
+    
     let programPath = lessons[lessonID-1]["program"];
     let labPath = lessons[lessonID-1]["lab"];
     let projectPath = lessons[lessonID-1]["project"];
 
+    // Replace placeholders in template with actual values
     let currentLesson  = baseLesson.replaceAll("LESSONID", lessonID).
                                     replaceAll("PROGRAMFILE", programPath).
                                     replaceAll("LABFILE", labPath).
                                     replaceAll("PROJECTFILE", projectPath);
-    lessonsContainer.appendChild(htmlToElement(currentLesson));
+
+    lessonsContainer.appendChild(htmlToElement(currentLesson));  // Add div
+}
+
+// Automatically expand Lesson if coming from assignment inside lesson
+let url = window.location.href;
+if (url.indexOf("?") !== -1) {  // Paramater has been passed
+    id = doubleDigit(url.split("?")[1].split("=")[1])  // Not ideal, incase a bad value is passed or a different paramater.
+    toggleLessonContent(id);
 }
 
 /**
- * Toggles the visibility of a Lesson Content list
+ * Toggles the visibility of a Lesson Content list when clicked on
  * @param lessonID -  2 digit number of lesson to toggle
  */
 function toggleLessonContent(lessonID) {

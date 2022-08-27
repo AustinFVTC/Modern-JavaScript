@@ -1,6 +1,7 @@
+/** Stores the file paths for all assignments */
 let lessons = [
     {  // Lesson 1
-        "program": "../../Home Page/empty.html",
+        "program": "index.html",  // Replace entire contents of quotes with the index file name
         "lab":     "../../Home Page/empty.html",
         "project": "../../Home Page/empty.html"
     }, 
