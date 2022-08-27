@@ -3,7 +3,7 @@ let lessons = [
     {  // Lesson 1
         "program": "index.html",  // Replace entire contents of quotes with the index file name
         "lab":     "../../Home Page/empty.html",
-        "project": "../../Home Page/empty.html"
+        "project": "project01-05.html"
     }, 
     {  // Lesson 2
         "program": "../../Home Page/empty.html",

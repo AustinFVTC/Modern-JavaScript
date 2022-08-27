@@ -4,6 +4,8 @@
 let baseLessonPath = "C:/Users/student/Desktop/mJS/Lesson_";
 let numOfLessons = 12;
 
+/** Last opened lesson ID */
+let lastOpened = null;
 
 /**
  * Template for a lesson div
@@ -77,4 +79,17 @@ if (url.indexOf("?") !== -1) {  // Paramater has been passed
 function toggleLessonContent(lessonID) {
     let lessonContainer = document.getElementById("lesson"+lessonID+"content")
     lessonContainer.hidden = !lessonContainer.hidden;
+    let newURL = "http://127.0.0.1:5500/Home%20Page/AustinLennert.html";
+    if (!lessonContainer.hidden) {
+        newURL += "?lesson=" + lessonID;
+    }
+    window.history.pushState("","Austin Lennert", newURL);  // Update url to reflect open lesson when coming back to main page
+
+    // Close previously opened lesson
+    if (lastOpened && lastOpened !== lessonID) {
+        document.getElementById("lesson"+lastOpened+"content").hidden = true;
+    }
+
+    lastOpened = lessonID;
+
 }
