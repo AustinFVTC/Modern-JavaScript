@@ -6,9 +6,9 @@ let lessons = [
         "project": "project01-05.html"
     }, 
     {  // Lesson 2
-        "program": "../../Home Page/empty.html",
-        "lab":     "../../Home Page/empty.html",
-        "project": "../../Home Page/empty.html"
+        "program": "js02.html",
+        "lab":     "index.html",
+        "project": "project02-04.html"
     }, 
     {  // Lesson 3
         "program": "../../Home Page/empty.html",
