@@ -93,14 +93,14 @@ div {
    cursor: pointer;
 }
 
-div:first-of-type {
+div#square {
    width: 220px;
    height: 220px;
    background: black;
    background: red;
 }
 
-div:nth-of-type(2) {
+div#triangle {
    width: 0; 
    height: 0; 
    border-left: 127px solid transparent;
@@ -108,7 +108,7 @@ div:nth-of-type(2) {
    border-bottom: 220px solid yellow;
 }
 
-div:last-of-type {
+div#circle {
    width: 220px;
    height: 220px;
    border-radius: 110px;

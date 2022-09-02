@@ -13,8 +13,9 @@
    -->
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-   <title>Hands-on Project 2-3</title>
    <link rel="stylesheet" href="styles/styles.css" />
+   <script src="scripts/project02-03.js" defer></script>
+   <title>Hands-on Project 2-3</title>
 </head>
 
 <body>
@@ -26,9 +27,9 @@
 
    <article>
       <h2>Pick a shape</h2>
-      <div id="square">&nbsp;</div>
-      <div id="triangle">&nbsp;</div>
-      <div id="circle">&nbsp;</div>
+      <div id="square" onmouseover="onHover('square')" onmouseout="offHover()">&nbsp;</div>
+      <div id="triangle" onmouseover="onHover('triangle')" onmouseout="offHover()">&nbsp;</div>
+      <div id="circle" onmouseover="onHover('circle')" onmouseout="offHover()">&nbsp;</div>
    </article>
    
    <p id="feedback"></p>

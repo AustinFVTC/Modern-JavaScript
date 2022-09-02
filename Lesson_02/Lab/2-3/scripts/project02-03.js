@@ -7,4 +7,12 @@
       Date:   8/29/2022
 
       Filename: project02-03.js
- */
+*/
+
+function onHover(shape) {
+      document.getElementById("feedback").innerText = `You're hovering over the ${shape}!`;
+}
+
+function offHover() {
+      document.getElementById("feedback").innerText = '';
+}
