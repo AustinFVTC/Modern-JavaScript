@@ -1,6 +1,7 @@
 body {
     color: #CCC;
     background-color: #303030;
+    width: max-content;
 }
 
 a {
