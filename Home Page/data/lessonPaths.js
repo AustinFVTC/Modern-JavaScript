@@ -26,9 +26,9 @@ let lessons = [
         "project": "project05-05.html"
     }, 
     {  // Lesson 6
-        "program": "../../Home Page/empty.html",
-        "lab":     "../../Home Page/empty.html",
-        "project": "../../Home Page/empty.html"
+        "program": "index.html",
+        "lab":     "index.html",
+        "project": "project06-05.html"
     }, 
     {  // Lesson 7
         "program": "../../Home Page/empty.html",
