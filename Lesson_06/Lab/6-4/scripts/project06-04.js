@@ -25,16 +25,17 @@ let makes = makeOptions.length;
 let models = modelOptions.length;
 let trims = trimOptions.length;
 
-// Form button to generate the complete text of the selected vehicle
+/** Form button to generate the complete text of the selected vehicle */
 let selectVehicle = document.getElementById("selectVehicle");
 
-// Paragraph containing the text of the selected vehicle
+/** Paragraph containing the text of the selected vehicle */
 let vehicle = document.getElementById("vehicle");
 
 
-// Event handler to modify the content of the Model selection list
-// when the Make selection list changes
-
+/**
+ * Event handler to modify the content of the Model selection list
+ * when the Make selection list changes
+ */
 make.onchange = function() {
    let makeIndex = make.selectedIndex;
    let makeCategory = make.options[makeIndex].text;
@@ -46,9 +47,10 @@ make.onchange = function() {
    }  
 }
 
-// Event handler to modify the content of the Trim selection list
-// when the Model selection list changes
-
+/**
+ * Event handler to modify the content of the Trim selection list
+ * when the Model selection list changes
+ */
 model.onchange = function() {
    let modelIndex = model.selectedIndex;
    let modelCategory = model.options[modelIndex].text;
@@ -60,3 +62,30 @@ model.onchange = function() {
    }     
 }
 
+function showAll(selectList) {
+   //                                   EX: select#make option
+   let options = document.querySelectorAll(`select#${selectList.id} option`);
+   let optionSize = options.length;
+   options.forEach(((option) => {
+      option.style.display = "block";
+   }));
+}
+
+function filterSelect(selectList, category) {
+   //                                   EX: select#make option
+   let options = document.querySelectorAll(`select#${selectList.id} option`);
+   let optionSize = options.length;
+   options.forEach(((option) => {
+
+      if (option.className === category) {
+         option.style.display = "block";
+      } else {
+         option.style.display = "none";
+      }
+   }));
+}
+
+
+selectVehicle.onclick = (() => {
+   vehicle.innerText = `${makeOptions[make.selectedIndex].innerText} ${modelOptions[model.selectedIndex].innerText} ${trimOptions[trim.selectedIndex].innerText}`;
+});

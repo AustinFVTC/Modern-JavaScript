@@ -11,3 +11,12 @@
 */
 
 
+window.addEventListener("load", (evt) => {
+      let allSelect = document.querySelectorAll("form#govLinks select");
+      allSelect.forEach(((select) => {
+            select.onchange = ((evt) => {
+                  let linkURL = evt.target.value;
+                  let newWin = window.open(linkURL);
+            });
+      }));
+});
