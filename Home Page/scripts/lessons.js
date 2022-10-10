@@ -63,6 +63,10 @@ for (let i = 1; i <= numOfLessons; i++) {
                                     replaceAll("PROJECTFILE", projectPath);
 
     lessonsContainer.appendChild(htmlToElement(currentLesson));  // Add div
+
+    // Put mid-term exam after week 7
+    if (i == 7) addMidExam();
+
 }
 
 // Automatically expand Lesson if coming from assignment inside lesson
@@ -94,4 +98,38 @@ function toggleLessonContent(lessonID) {
 
     lastOpened = lessonID;
 
+}
+
+/**
+ *  Adds a lesson block for the Mid-Term Exam
+ *  Lesson id is equal to "MIDEXAM" rather than a lesson number
+ */
+function addMidExam() {
+    let midExamDiv = `
+    <div id="midExam">
+        <h3 class="lessonContent" onclick="toggleLessonContent('MIDEXAM')">Midterm Exam</h3>
+        <ul id="lessonMIDEXAMcontent" hidden>
+        <li><a href="../Midterm_Exam/mid-term.html" >View Midterm Exam Practical</a></li>
+        </ul>
+    </div>
+    `;
+    
+    lessonsContainer.appendChild(htmlToElement(midExamDiv));  // Add div
+}
+
+function toggleMidExam() {
+    let lessonContainer = document.getElementById("lessonMIDEXAMcontent")
+    lessonContainer.hidden = !lessonContainer.hidden;
+    let newURL = baseURL;
+    if (!lessonContainer.hidden) {
+        newURL += "?lesson=" + lessonID;
+    }
+    window.history.pushState("","Austin Lennert", newURL);  // Update url to reflect open lesson when coming back to main page
+
+    // Close previously opened lesson
+    if (lastOpened && lastOpened !== lessonID) {
+        document.getElementById("lessonMIDEXAMcontent").hidden = true;
+    }
+
+    lastOpened = lessonID;
 }
