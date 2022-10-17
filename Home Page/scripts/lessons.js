@@ -97,6 +97,8 @@ for (let i = 1; i <= numOfLessons; i++) {
             </ul>
         </li>`);
 
+        lessonsContainer.removeChild(lesson8ContainerB);
+
         continue;  // Finished with lesson 8
 
     }
