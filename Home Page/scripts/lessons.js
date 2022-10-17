@@ -52,6 +52,56 @@ function doubleDigit(num) {
 for (let i = 1; i <= numOfLessons; i++) {
     let lessonID = doubleDigit(i)
     
+    if (i === 8) {
+        // Setup A
+        let programPathA = lessons[lessonID-1]["a"]["program"];
+        let labPathA = lessons[lessonID-1]["a"]["lab"];
+        let projectPathA = lessons[lessonID-1]["a"]["project"];
+
+        // Replace placeholders in template with actual values
+        let currentLessonA  = baseLesson.replaceAll("LESSONID", lessonID).
+        replaceAll("PROGRAMFILE", "../8a/Program/" + programPathA).
+        replaceAll("LABFILE", "../8a/Lab/" + labPathA).
+        replaceAll("PROJECTFILE", "../8a/Project/" + projectPathA);
+        
+        // Setup B
+        let programPathB = lessons[lessonID-1]["b"]["program"];
+        let labPathB = lessons[lessonID-1]["b"]["lab"];
+        let projectPathB = lessons[lessonID-1]["b"]["project"];
+
+        // Replace placeholders in template with actual values
+        let currentLessonB  = baseLesson.replaceAll("LESSONID", lessonID).
+        replaceAll("PROGRAMFILE", "../8a/Program/" + programPathB).
+        replaceAll("LABFILE", "../8b/Lab/" + labPathB).
+        replaceAll("PROJECTFILE", "../8a/Project/" + projectPathB);
+        
+        lessonsContainer.appendChild(htmlToElement(currentLessonA));  // Add A div
+        let lesson8Container = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8A
+        let aList = lesson8Container.children[lesson8Container.children.length - 1];  // Get last content additions, which is ul with A content
+        let aContents = aList.innerHTML;
+
+        lessonsContainer.appendChild(htmlToElement(currentLessonB));  // Add B div
+        let lesson8ContainerB = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8B
+        let bList = lesson8ContainerB.children[lesson8ContainerB.children.length - 1];  // Get last content additions, which is ul with B content
+        let bContents = bList.innerHTML;
+
+        aList.innerHTML = (`
+        <li>8A
+            <ul>
+                ` + aContents + `
+            </ul>
+        </li>
+        <li>8B
+            <ul>
+                ` + bContents + `
+            </ul>
+        </li>`);
+
+        continue;  // Finished with lesson 8
+
+    }
+
+
     let programPath = lessons[lessonID-1]["program"];
     let labPath = lessons[lessonID-1]["lab"];
     let projectPath = lessons[lessonID-1]["project"];
@@ -61,6 +111,7 @@ for (let i = 1; i <= numOfLessons; i++) {
                                     replaceAll("PROGRAMFILE", programPath).
                                     replaceAll("LABFILE", labPath).
                                     replaceAll("PROJECTFILE", projectPath);
+
 
     lessonsContainer.appendChild(htmlToElement(currentLesson));  // Add div
 
@@ -74,7 +125,7 @@ let url = window.location.href;
 let baseURL = url;
 if (url.indexOf("?") !== -1) {  // Paramater has been passed
     baseURL = url.split("?")[0];
-    id = doubleDigit(url.split("?")[1].split("=")[1]);  // Not ideal, incase a bad value is passed or a different paramater.
+    id = doubleDigit(url.split("?")[1].split("=")[1]);  // Not ideal, incase a bad value is passed or a different paramater. Oh well
     toggleLessonContent(id);
 }
 
@@ -115,21 +166,4 @@ function addMidExam() {
     `;
     
     lessonsContainer.appendChild(htmlToElement(midExamDiv));  // Add div
-}
-
-function toggleMidExam() {
-    let lessonContainer = document.getElementById("lessonMIDEXAMcontent")
-    lessonContainer.hidden = !lessonContainer.hidden;
-    let newURL = baseURL;
-    if (!lessonContainer.hidden) {
-        newURL += "?lesson=" + lessonID;
-    }
-    window.history.pushState("","Austin Lennert", newURL);  // Update url to reflect open lesson when coming back to main page
-
-    // Close previously opened lesson
-    if (lastOpened && lastOpened !== lessonID) {
-        document.getElementById("lessonMIDEXAMcontent").hidden = true;
-    }
-
-    lastOpened = lessonID;
 }

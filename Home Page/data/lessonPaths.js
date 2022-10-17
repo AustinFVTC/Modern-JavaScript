@@ -36,9 +36,16 @@ let lessons = [
         "project": "project07-04.html"
     }, 
     {  // Lesson 8
-        "program": "../../Home Page/empty.html",
-        "lab":     "../../Home Page/empty.html",
-        "project": "../../Home Page/empty.html"
+        "a": {
+            "program": "js08.html",
+            "lab":     "index.html",
+            "project": "project08-03.html"
+        },
+        "b": {
+            "program": "../../../Home Page/empty.html",
+            "lab":     "../../../Home Page/empty.html",
+            "project": "../../../Home Page/empty.html"
+        }
     }, 
     {  // Lesson 9
         "program": "../../Home Page/empty.html",
