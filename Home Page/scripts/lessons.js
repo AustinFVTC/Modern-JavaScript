@@ -71,9 +71,9 @@ for (let i = 1; i <= numOfLessons; i++) {
 
         // Replace placeholders in template with actual values
         let currentLessonB  = baseLesson.replaceAll("LESSONID", lessonID).
-        replaceAll("PROGRAMFILE", "../8a/Program/" + programPathB).
+        replaceAll("PROGRAMFILE", "../8b/Program/" + programPathB).
         replaceAll("LABFILE", "../8b/Lab/" + labPathB).
-        replaceAll("PROJECTFILE", "../8a/Project/" + projectPathB);
+        replaceAll("PROJECTFILE", "../8b/Project/" + projectPathB);
         
         lessonsContainer.appendChild(htmlToElement(currentLessonA));  // Add A div
         let lesson8Container = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8A
