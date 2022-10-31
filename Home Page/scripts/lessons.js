@@ -53,54 +53,8 @@ for (let i = 1; i <= numOfLessons; i++) {
     let lessonID = doubleDigit(i)
     
     if (i === 8) {
-        // Setup A
-        let programPathA = lessons[lessonID-1]["a"]["program"];
-        let labPathA = lessons[lessonID-1]["a"]["lab"];
-        let projectPathA = lessons[lessonID-1]["a"]["project"];
-
-        // Replace placeholders in template with actual values
-        let currentLessonA  = baseLesson.replaceAll("LESSONID", lessonID).
-        replaceAll("PROGRAMFILE", "../8a/Program/" + programPathA).
-        replaceAll("LABFILE", "../8a/Lab/" + labPathA).
-        replaceAll("PROJECTFILE", "../8a/Project/" + projectPathA);
-        
-        // Setup B
-        let programPathB = lessons[lessonID-1]["b"]["program"];
-        let labPathB = lessons[lessonID-1]["b"]["lab"];
-        let projectPathB = lessons[lessonID-1]["b"]["project"];
-
-        // Replace placeholders in template with actual values
-        let currentLessonB  = baseLesson.replaceAll("LESSONID", lessonID).
-        replaceAll("PROGRAMFILE", "../8b/Program/" + programPathB).
-        replaceAll("LABFILE", "../8b/Lab/" + labPathB).
-        replaceAll("PROJECTFILE", "../8b/Project/" + projectPathB);
-        
-        lessonsContainer.appendChild(htmlToElement(currentLessonA));  // Add A div
-        let lesson8Container = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8A
-        let aList = lesson8Container.children[lesson8Container.children.length - 1];  // Get last content additions, which is ul with A content
-        let aContents = aList.innerHTML;
-
-        lessonsContainer.appendChild(htmlToElement(currentLessonB));  // Add B div
-        let lesson8ContainerB = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8B
-        let bList = lesson8ContainerB.children[lesson8ContainerB.children.length - 1];  // Get last content additions, which is ul with B content
-        let bContents = bList.innerHTML;
-
-        aList.innerHTML = (`
-        <li>8A
-            <ul>
-                ` + aContents + `
-            </ul>
-        </li>
-        <li>8B
-            <ul>
-                ` + bContents + `
-            </ul>
-        </li>`);
-
-        lessonsContainer.removeChild(lesson8ContainerB);
-
+        addLesson8(lessonID);
         continue;  // Finished with lesson 8
-
     }
 
 
@@ -118,7 +72,7 @@ for (let i = 1; i <= numOfLessons; i++) {
     lessonsContainer.appendChild(htmlToElement(currentLesson));  // Add div
 
     // Put mid-term exam after week 7
-    if (i == 7) addMidExam();
+    if (i === 7) addMidExam();
 
 }
 
@@ -168,4 +122,57 @@ function addMidExam() {
     `;
     
     lessonsContainer.appendChild(htmlToElement(midExamDiv));  // Add div
+}
+
+/**
+ * Adds a lesson block for Lesson 8a and Lesson 8b
+ * @param {string} lessonID -  2 digit number of lesson, should always be '08'
+ */
+function addLesson8(lessonID) {
+    // Setup A
+    let programPathA = lessons[lessonID-1]["a"]["program"];
+    let labPathA = lessons[lessonID-1]["a"]["lab"];
+    let projectPathA = lessons[lessonID-1]["a"]["project"];
+
+    // Replace placeholders in template with actual values
+    let currentLessonA  = baseLesson.replaceAll("LESSONID", lessonID).
+    replaceAll("PROGRAMFILE", "../8a/Program/" + programPathA).
+    replaceAll("LABFILE", "../8a/Lab/" + labPathA).
+    replaceAll("PROJECTFILE", "../8a/Project/" + projectPathA);
+    
+    // Setup B
+    let programPathB = lessons[lessonID-1]["b"]["program"];
+    let labPathB = lessons[lessonID-1]["b"]["lab"];
+    let projectPathB = lessons[lessonID-1]["b"]["project"];
+
+    // Replace placeholders in template with actual values
+    let currentLessonB  = baseLesson.replaceAll("LESSONID", lessonID).
+    replaceAll("PROGRAMFILE", "../8b/Program/" + programPathB).
+    replaceAll("LABFILE", "../8b/Lab/" + labPathB).
+    replaceAll("PROJECTFILE", "../8b/Project/" + projectPathB);
+    
+    lessonsContainer.appendChild(htmlToElement(currentLessonA));  // Add A div
+    let lesson8Container = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8A
+    let aList = lesson8Container.children[lesson8Container.children.length - 1];  // Get last content additions, which is ul with A content
+    let aContents = aList.innerHTML;
+
+    lessonsContainer.appendChild(htmlToElement(currentLessonB));  // Add B div
+    let lesson8ContainerB = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8B
+    let bList = lesson8ContainerB.children[lesson8ContainerB.children.length - 1];  // Get last content additions, which is ul with B content
+    let bContents = bList.innerHTML;
+
+    aList.innerHTML = (`
+    <li>8A
+        <ul>
+            ` + aContents + `
+        </ul>
+    </li>
+    <li>8B
+        <ul>
+            ` + bContents + `
+        </ul>
+    </li>`);
+
+    lessonsContainer.removeChild(lesson8ContainerB);
+
 }

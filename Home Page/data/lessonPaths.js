@@ -48,9 +48,9 @@ let lessons = [
         }
     }, 
     {  // Lesson 9
-        "program": "../../Home Page/empty.html",
-        "lab":     "../../Home Page/empty.html",
-        "project": "../../Home Page/empty.html"
+        "program": "index.html",
+        "lab":     "index.html",
+        "project": "cart.html"
     }, 
     {  // Lesson 10
         "program": "../../Home Page/empty.html",
