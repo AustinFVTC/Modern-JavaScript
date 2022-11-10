@@ -53,7 +53,7 @@ let lessons = [
         "project": "cart.html"
     }, 
     {  // Lesson 10
-        "program": "../../Home Page/empty.html",
+        "program": "js10a.html",
         "lab":     "../../Home Page/empty.html",
         "project": "../../Home Page/empty.html"
     }, 
