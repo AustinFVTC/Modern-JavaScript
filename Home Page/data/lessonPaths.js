@@ -53,9 +53,9 @@ let lessons = [
         "project": "cart.html"
     }, 
     {  // Lesson 10
-        "program": "js10a.html",
-        "lab":     "../../Home Page/empty.html",
-        "project": "../../Home Page/empty.html"
+        "program": "index.html",
+        "lab":     "project10-02.html",
+        "project": "project10-5.html"
     }, 
     {  // Lesson 11
         "program": "../../Home Page/empty.html",

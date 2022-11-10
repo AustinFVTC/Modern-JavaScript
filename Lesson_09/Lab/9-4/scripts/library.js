@@ -49,7 +49,7 @@ function init() {
             let currentBlock = blockContainer.children[8];
             currentBlock.id = "block0";
             currentBlock.firstElementChild.src = "images/block0.jpg";
-            currentBlock.firstElementChild.alt = 8;
+            currentBlock.firstElementChild.alt = 7;
 
         // Start the timer when the Start button is clicked
         timerID = window.setInterval(runTimer, 1000);

@@ -18,8 +18,12 @@
    <link rel="stylesheet" href="./styles/stylesb.css" />
    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
    <link href='http://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
+   <link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.css"/>
    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+   <script src="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.js"></script>
+   <script src="./scripts/js10b.js" defer></script>
 
+   
 
    <!-- 
        Author's note: You will have to supply your own API key to access the Google Maps API. Simply paste
@@ -42,8 +46,8 @@
          available for our guests and patrons. We look forward to seeing you!
       </p>
       
-      <div id="displayMap"></div>
-      <div id="routeBox"></div>
+      <div id="map"></div>
+      <input type="button" value="Map Directions" id="directions" />
 
    </article>
    
