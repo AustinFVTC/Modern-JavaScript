@@ -52,9 +52,9 @@ function doubleDigit(num) {
 for (let i = 1; i <= numOfLessons; i++) {
     let lessonID = doubleDigit(i)
     
-    if (i === 8) {
-        addLesson8(lessonID);
-        continue;  // Finished with lesson 8
+    if (i === 8 || i === 11) {
+        addDualLesson(lessonID);
+        continue;  // Finished with dual lesson
     }
 
 
@@ -125,10 +125,11 @@ function addMidExam() {
 }
 
 /**
- * Adds a lesson block for Lesson 8a and Lesson 8b
- * @param {string} lessonID -  2 digit number of lesson, should always be '08'
+ * Adds a lesson block for Lesson XXa and Lesson XXb
+ * @param {string} lessonID -  2 digit number of lesson
  */
-function addLesson8(lessonID) {
+function addDualLesson(lessonID) {
+    lessonIDSingle = lessonID-0;
     // Setup A
     let programPathA = lessons[lessonID-1]["a"]["program"];
     let labPathA = lessons[lessonID-1]["a"]["lab"];
@@ -136,9 +137,9 @@ function addLesson8(lessonID) {
 
     // Replace placeholders in template with actual values
     let currentLessonA  = baseLesson.replaceAll("LESSONID", lessonID).
-    replaceAll("PROGRAMFILE", "../8a/Program/" + programPathA).
-    replaceAll("LABFILE", "../8a/Lab/" + labPathA).
-    replaceAll("PROJECTFILE", "../8a/Project/" + projectPathA);
+    replaceAll("PROGRAMFILE", `../${lessonIDSingle}a/Program/` + programPathA).
+    replaceAll("LABFILE", `../${lessonIDSingle}a/Lab/` + labPathA).
+    replaceAll("PROJECTFILE", `../${lessonIDSingle}a/Project/` + projectPathA);
     
     // Setup B
     let programPathB = lessons[lessonID-1]["b"]["program"];
@@ -147,32 +148,32 @@ function addLesson8(lessonID) {
 
     // Replace placeholders in template with actual values
     let currentLessonB  = baseLesson.replaceAll("LESSONID", lessonID).
-    replaceAll("PROGRAMFILE", "../8b/Program/" + programPathB).
-    replaceAll("LABFILE", "../8b/Lab/" + labPathB).
-    replaceAll("PROJECTFILE", "../8b/Project/" + projectPathB);
+    replaceAll("PROGRAMFILE", `../${lessonIDSingle}b/Program/` + programPathB).
+    replaceAll("LABFILE", `../${lessonIDSingle}b/Lab/` + labPathB).
+    replaceAll("PROJECTFILE", `../${lessonIDSingle}b/Project/` + projectPathB);
     
     lessonsContainer.appendChild(htmlToElement(currentLessonA));  // Add A div
-    let lesson8Container = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8A
-    let aList = lesson8Container.children[lesson8Container.children.length - 1];  // Get last content additions, which is ul with A content
+    let mainLessonContainer = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8A
+    let aList = mainLessonContainer.children[mainLessonContainer.children.length - 1];  // Get last content additions, which is ul with A content
     let aContents = aList.innerHTML;
 
     lessonsContainer.appendChild(htmlToElement(currentLessonB));  // Add B div
-    let lesson8ContainerB = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8B
-    let bList = lesson8ContainerB.children[lesson8ContainerB.children.length - 1];  // Get last content additions, which is ul with B content
+    let lessonSubcontainerB = lessonsContainer.children[lessonsContainer.children.length - 1];  // Get last child, which is Lesson 8B
+    let bList = lessonSubcontainerB.children[lessonSubcontainerB.children.length - 1];  // Get last content additions, which is ul with B content
     let bContents = bList.innerHTML;
 
     aList.innerHTML = (`
-    <li>8A
+    <li>${lessonIDSingle}A
         <ul>
             ` + aContents + `
         </ul>
     </li>
-    <li>8B
+    <li>${lessonIDSingle}B
         <ul>
             ` + bContents + `
         </ul>
     </li>`);
 
-    lessonsContainer.removeChild(lesson8ContainerB);
+    lessonsContainer.removeChild(lessonSubcontainerB);
 
 }

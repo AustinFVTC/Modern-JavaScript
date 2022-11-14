@@ -34,7 +34,7 @@ let lessons = [
         "program": "js07.html",
         "lab":     "index.html",
         "project": "project07-04.html"
-    }, 
+    },
     {  // Lesson 8
         "a": {
             "program": "js08.html",
@@ -46,7 +46,7 @@ let lessons = [
             "lab":     "project08-04.html",
             "project": "project08-05.html"
         }
-    }, 
+    },
     {  // Lesson 9
         "program": "index.html",
         "lab":     "index.html",
@@ -56,12 +56,19 @@ let lessons = [
         "program": "index.html",
         "lab":     "project10-02.html",
         "project": "project10-5.html"
-    }, 
+    },
     {  // Lesson 11
-        "program": "../../Home Page/empty.html",
-        "lab":     "../../Home Page/empty.html",
-        "project": "../../Home Page/empty.html"
-    }, 
+        "a": {
+            "program": "../../../Home Page/empty.html",
+            "lab":     "project11-01.html",
+            "project": "project11-02.html"
+        },
+        "b": {
+            "program": "../../../Home Page/empty.html",
+            "lab":     "../../../Home Page/empty.html",
+            "project": "../../../Home Page/empty.html"
+        }
+    },
     {  // Lesson 12
         "program": "../../Home Page/empty.html",
         "lab":     "../../Home Page/empty.html",
