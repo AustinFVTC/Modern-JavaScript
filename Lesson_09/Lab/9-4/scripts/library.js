@@ -10,6 +10,9 @@
       Filename: project09-04.js
 */
 
+/** If true, makes the game really easy to solve */
+var debug = false;
+
 /* Page Objects */
 let blocks = document.getElementsByClassName("block");
 let timer = document.getElementById("timer");
@@ -170,6 +173,10 @@ function scrambleIntegers(size) {
                 }
             }
         }
+    }
+    
+    if (debug) {
+        x = [1,2,3,4,6,8,7,5];
     }
     return x;
 
