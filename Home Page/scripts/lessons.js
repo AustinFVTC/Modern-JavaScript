@@ -18,9 +18,9 @@ let baseLesson = `
 <div id="lessonLESSONID">
     <h3 class="lessonContent" onclick="toggleLessonContent('LESSONID')">Lesson LESSONID</h3>
     <ul id="lessonLESSONIDcontent" hidden>
-        <a href="../Lesson_LESSONID/Program/PROGRAMFILE"><li>Program</li></a>
-        <a href="../Lesson_LESSONID/Lab/LABFILE"><li>Lab</li></a>
-        <a href="../Lesson_LESSONID/Project/PROJECTFILE"><li>Project</li></a>
+        <a href="../Lesson_LESSONID/Program/PROGRAMFILE" target="_blank"><li>Program</li></a>
+        <a href="../Lesson_LESSONID/Lab/LABFILE" target="_blank"><li>Lab</li></a>
+        <a href="../Lesson_LESSONID/Project/PROJECTFILE" target="_blank"><li>Project</li></a>
     </ul>
 </div>
 `;
@@ -116,7 +116,7 @@ function addMidExam() {
     <div id="midExam">
         <h3 class="lessonContent" onclick="toggleLessonContent('MIDEXAM')">Midterm Exam</h3>
         <ul id="lessonMIDEXAMcontent" hidden>
-        <li><a href="../Midterm_Exam/mid-term.html" >View Midterm Exam Practical</a></li>
+        <li><a href="../Midterm_Exam/mid-term.html" target="_blank">View Midterm Exam Practical</a></li>
         </ul>
     </div>
     `;
@@ -136,7 +136,24 @@ function addDualLesson(lessonID) {
     let projectPathA = lessons[lessonID-1]["a"]["project"];
 
     // Replace placeholders in template with actual values
-    let currentLessonA  = baseLesson.replaceAll("LESSONID", lessonID).
+    let currentLessonA = baseLesson.replaceAll("LESSONID", lessonID);
+
+    // Replace localhost paths
+    if (programPathA.includes("localhost")) {
+        let programPath = "../Lesson_LESSONID/Program/PROGRAMFILE".replaceAll("LESSONID", lessonID);
+        currentLessonA = currentLessonA.replaceAll(programPath, programPathA);
+    }
+    if (labPathA.includes("localhost")) {
+        let labPath = "../Lesson_LESSONID/Lab/LABFILE".replaceAll("LESSONID", lessonID);
+        currentLessonA = currentLessonA.replaceAll(labPath, labPathA);
+    }
+    if (projectPathA.includes("localhost")) {
+        let projectPath = "../Lesson_LESSONID/Project/PROJECTFILE".replaceAll("LESSONID", lessonID);
+        currentLessonA = currentLessonA.replaceAll(projectPath, projectPathA);
+    }
+
+    // Replace non localhost paths
+    currentLessonA = currentLessonA.
     replaceAll("PROGRAMFILE", `../${lessonIDSingle}a/Program/` + programPathA).
     replaceAll("LABFILE", `../${lessonIDSingle}a/Lab/` + labPathA).
     replaceAll("PROJECTFILE", `../${lessonIDSingle}a/Project/` + projectPathA);
@@ -147,7 +164,24 @@ function addDualLesson(lessonID) {
     let projectPathB = lessons[lessonID-1]["b"]["project"];
 
     // Replace placeholders in template with actual values
-    let currentLessonB  = baseLesson.replaceAll("LESSONID", lessonID).
+    let currentLessonB  = baseLesson.replaceAll("LESSONID", lessonID);
+
+    // Replace localhost paths
+    if (programPathB.includes("localhost")) {
+        let programPath = "../Lesson_LESSONID/Program/PROGRAMFILE".replaceAll("LESSONID", lessonID);
+        currentLessonB = currentLessonB.replaceAll(programPath, programPathB);
+    }
+    if (labPathB.includes("localhost")) {
+        let labPath = "../Lesson_LESSONID/Lab/LABFILE".replaceAll("LESSONID", lessonID);
+        currentLessonB = currentLessonB.replaceAll(labPath, labPathB);
+    }
+    if (projectPathB.includes("localhost")) {
+        let projectPath = "../Lesson_LESSONID/Project/PROJECTFILE".replaceAll("LESSONID", lessonID);
+        currentLessonB = currentLessonB.replaceAll(projectPath, projectPathB);
+    }
+
+    // Replace non localhost paths
+    currentLessonB = currentLessonB.
     replaceAll("PROGRAMFILE", `../${lessonIDSingle}b/Program/` + programPathB).
     replaceAll("LABFILE", `../${lessonIDSingle}b/Lab/` + labPathB).
     replaceAll("PROJECTFILE", `../${lessonIDSingle}b/Project/` + projectPathB);

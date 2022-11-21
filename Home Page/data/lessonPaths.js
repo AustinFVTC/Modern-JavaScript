@@ -59,14 +59,14 @@ let lessons = [
     },
     {  // Lesson 11
         "a": {
-            "program": "../../../Home Page/empty.html",
+            "program": "http://localhost/mJS-Ch/js11.html",
             "lab":     "project11-01.html",
             "project": "project11-02.html"
         },
         "b": {
-            "program": "../../../Home Page/empty.html",
-            "lab":     "../../../Home Page/empty.html",
-            "project": "../../../Home Page/empty.html"
+            "program": "http://localhost/mJS-Ch/js11.html",
+            "lab":     "http://localhost/mJS-P3/project11-03.html",
+            "project": "http://localhost/mJS-P5/project11-05.html"
         }
     },
     {  // Lesson 12
