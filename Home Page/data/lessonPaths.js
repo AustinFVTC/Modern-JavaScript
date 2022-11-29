@@ -70,8 +70,8 @@ let lessons = [
         }
     },
     {  // Lesson 12
-        "program": "../../Home Page/empty.html",
-        "lab":     "../../Home Page/empty.html",
+        "program": "js12.html",
+        "lab":     "project12-01.html",
         "project": "../../Home Page/empty.html"
     }
 ]
