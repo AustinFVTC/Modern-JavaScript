@@ -11,8 +11,12 @@
 */
 
 
-
-
-
-
-                                                
+$(() => {
+    $("li.submenu").
+    mouseover(e => {
+        $(e.currentTarget).children("ul").show();
+    })
+    .mouseout(e => {
+        $(e.currentTarget).children("ul").hide()
+    })
+});

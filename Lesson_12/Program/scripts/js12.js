@@ -13,6 +13,22 @@
 
 // jQuery Run once the page is loaded and ready
 $(() => {
+    // Animate the h1 heading
+    $("section > h1").css({
+        fontSize: 0,
+        opacity: 0,
+    }).animate({
+        fontSize: "2.3em",
+        opacity: 1,
+    }, 600);
+
+    $("dl#faq")
+    .hide()
+    .effect("clip", {
+        mode: "show",
+        direction: "horizontal"
+    }, 600);
+
     $("dl#faq dt").click(e => {
         let questionElem = $(e.target);
         let answerElem = $(questionElem.next());
