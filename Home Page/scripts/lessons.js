@@ -28,7 +28,7 @@ let baseLesson = `
 /** Div surrounding all lessons */
 let lessonsContainer = document.getElementById("LessonsContainer");
 
-// Duplicates and adds 12 lessons leading to their proper files
+// Duplicates and adds 12 lessons leading to their proper files, as well as the mid and final exams
 for (let i = 1; i <= numOfLessons; i++) {
     let lessonID = doubleDigit(i)
     
@@ -53,6 +53,7 @@ for (let i = 1; i <= numOfLessons; i++) {
 
     // Put mid-term exam after week 7
     if (i === 7) addMidExam();
+    if (i === numOfLessons) addFinalExam();
 
 }
 
@@ -111,7 +112,7 @@ function toggleLessonContent(lessonID) {
  *  Adds a lesson block for the Mid-Term Exam
  *  Lesson id is equal to "MIDEXAM" rather than a lesson number
  */
-function addMidExam() {
+ function addMidExam() {
     let midExamDiv = `
     <div id="midExam">
         <h3 class="lessonContent" onclick="toggleLessonContent('MIDEXAM')">Midterm Exam</h3>
@@ -122,6 +123,23 @@ function addMidExam() {
     `;
     
     lessonsContainer.appendChild(htmlToElement(midExamDiv));  // Add div
+}
+
+/**
+ *  Adds a lesson block for the Final Exam
+ *  Lesson id is equal to "FINEXAM" rather than a lesson number
+ */
+function addFinalExam() {
+    let finalExamDiv = `
+    <div id="finExam">
+        <h3 class="lessonContent" onclick="toggleLessonContent('FINEXAM')">Final Exam</h3>
+        <ul id="lessonFINEXAMcontent" hidden>
+        <li><a href="../Final_Exam/finalExam2.html" target="_blank">View Final Exam Practical</a></li>
+        </ul>
+    </div>
+    `;
+    
+    lessonsContainer.appendChild(htmlToElement(finalExamDiv));  // Add div
 }
 
 /**
